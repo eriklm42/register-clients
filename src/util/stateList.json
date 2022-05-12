@@ -1,0 +1,137 @@
+[
+  {
+    "id": 11,
+    "key": "RO",
+    "name": "Rondônia"
+  },
+  {
+    "id": 12,
+    "key": "AC",
+    "name": "Acre"
+  },
+  {
+    "id": 13,
+    "key": "AM",
+    "name": "Amazonas"
+  },
+  {
+    "id": 14,
+    "key": "RR",
+    "name": "Roraima"
+  },
+  {
+    "id": 15,
+    "key": "PA",
+    "name": "Pará"
+  },
+  {
+    "id": 16,
+    "key": "AP",
+    "name": "Amapá"
+  },
+  {
+    "id": 17,
+    "key": "TO",
+    "name": "Tocantins"
+  },
+  {
+    "id": 21,
+    "key": "MA",
+    "name": "Maranhão"
+  },
+  {
+    "id": 22,
+    "key": "PI",
+    "name": "Piauí"
+  },
+  {
+    "id": 23,
+    "key": "CE",
+    "name": "Ceará"
+  },
+  {
+    "id": 24,
+    "key": "RN",
+    "name": "Rio Grande do Norte"
+  },
+  {
+    "id": 25,
+    "key": "PB",
+    "name": "Paraíba"
+  },
+  {
+    "id": 26,
+    "key": "PE",
+    "name": "Pernambuco"
+  },
+  {
+    "id": 27,
+    "key": "AL",
+    "name": "Alagoas"
+  },
+  {
+    "id": 28,
+    "key": "SE",
+    "name": "Sergipe"
+  },
+  {
+    "id": 29,
+    "key": "BA",
+    "name": "Bahia"
+  },
+  {
+    "id": 31,
+    "key": "MG",
+    "name": "Minas Gerais"
+  },
+  {
+    "id": 32,
+    "key": "ES",
+    "name": "Espírito Santo"
+  },
+  {
+    "id": 33,
+    "key": "RJ",
+    "name": "Rio de Janeiro"
+  },
+  {
+    "id": 35,
+    "key": "SP",
+    "name": "São Paulo"
+  },
+  {
+    "id": 41,
+    "key": "PR",
+    "name": "Paraná"
+  },
+  {
+    "id": 42,
+    "key": "SC",
+    "name": "Santa Catarina"
+  },
+  {
+    "id": 43,
+    "key": "RS",
+    "name": "Rio Grande do Sul"
+  },
+  {
+    "id": 50,
+    "key": "MS",
+    "name": "Mato Grosso do Sul"
+  },
+  {
+    "id": 51,
+    "key": "MT",
+    "name": "Mato Grosso"
+  },
+  {
+    "id": 52,
+    "key": "GO",
+    "name": "Goiás"
+  },
+  {
+    "id": 53,
+    "key": "DF",
+    "name": "Distrito Federal"
+  }
+]

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI
 
-const createConnection = () => {
+export const createConnection = () => {
     return mongoose.createConnection(MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: false,
@@ -13,4 +13,3 @@ const createConnection = () => {
     })
 }
 
-export { createConnection }
