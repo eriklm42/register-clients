@@ -1,0 +1,8 @@
+{
+  "name": "register-clients",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/eriklm42/register-clients.git",
+  "author": "Erik Lucas <eriklm42@gmail.com>",
+  "license": "MIT"
+}
