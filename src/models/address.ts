@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import valid from "./validation";
-import stateList from "../util/stateList"
+import valid from "../helpers/validation";
+import stateList from "../util/stateList.json"
 
 const states = stateList.map(state => state.key)
 
-const schemaValidation = valid.object({
+export const schemaValidation = valid.object({
     action: valid.string(),
     _id: valid.string().when(valid.ref("action"), {
         is: valid.alternatives("update"),
@@ -45,7 +45,7 @@ const schemaValidation = valid.object({
     }).required()
 
 
-const schema = {
+export const schema = {
     name: mongoose.Schema.Types.String,
     street: mongoose.Schema.Types.String,
     number: mongoose.Schema.Types.Number,
