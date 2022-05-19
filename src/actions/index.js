@@ -1,16 +1,23 @@
 const Actions = () => {
+  const search = async (model, where, populateOptions, onlyOne = false) => {
+    const query = model.find(where);
+    if (populateOptions) query.populate(populateOptions);
+    const response = await query.exec();
+    return onlyOne ? response[0] : response;
+  };
+
   const create = async (model, data) => {
     await model.customValidate({ ...data, action: "create" });
 
     return await new model(data).save();
   };
 
-  const find = async (model, where, populateOptions, sort = {}, limit = 1) => {
-    const query = model.find(where).sort(sort).limit(limit);
-    if (populateOptions) query.populate(populateOptions);
-    const response = await query.exec();
-    console.log({ response });
-    return response;
+  const findOne = async (model, where, populateOptions) => {
+    return await search(model, where, populateOptions, true);
+  };
+
+  const find = async (model, where, populateOptions) => {
+    return await search(model, where, populateOptions);
   };
 
   const remove = async (model, where) => {
@@ -34,6 +41,7 @@ const Actions = () => {
   return {
     create,
     find,
+    findOne,
     remove,
     update,
   };

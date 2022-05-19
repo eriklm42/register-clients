@@ -54,7 +54,7 @@ export const schema = {
   postalCode: mongoose.Schema.Types.Number,
 };
 
-const index = {
+export const index = {
   street: "text",
   complement: "text",
   number: "number",
@@ -65,7 +65,7 @@ const index = {
   postalCode: "number",
 };
 
-const weights = {
+export const weights = {
   name: "addressindx",
   weights: {
     street: 20,
@@ -79,7 +79,7 @@ const weights = {
   },
 };
 
-const model = new mongoose.Schema(schema, {
+export const model = new mongoose.Schema(schema, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
   strict: false,
 });
@@ -87,7 +87,7 @@ const model = new mongoose.Schema(schema, {
 model.index(index, weights);
 model.statics.customValidate = async (obj) => valid.attempt(obj, schemaValidation);
 
-const name = "Address";
-const collection = "address";
+export const name = "Address";
+export const collection = "address";
 
 export default (conn) => conn.model(name, model, collection);

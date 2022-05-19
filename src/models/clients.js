@@ -23,16 +23,24 @@ export const schemaValidation = valid.object({
     is: valid.alternatives("create"),
     then: valid.required(),
   }),
+  email: valid
+    .string()
+    .email()
+    .when(valid.ref("action"), {
+      is: valid.alternatives("create"),
+      then: valid.required(),
+    }),
   address: valid.array().when(valid.ref("action"), {
     is: valid.alternatives("create"),
     then: valid.required(),
   }),
 });
 
-const schema = {
+export const schema = {
   name: mongoose.Schema.Types.String,
   document: mongoose.Schema.Types.String,
   birth_date: mongoose.Schema.Types.Date,
+  email: mongoose.Schema.Types.String,
   address: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -41,22 +49,24 @@ const schema = {
   ],
 };
 
-const index = {
+export const index = {
   name: "text",
   document: "text",
   birth_date: "date",
+  email: "text",
 };
 
-const weights = {
+export const weights = {
   name: "clientindx",
   weights: {
     name: 30,
     document: 18,
     birth_date: 9,
+    email: 20,
   },
 };
 
-const model = new mongoose.Schema(schema, {
+export const model = new mongoose.Schema(schema, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at", active: true },
   strict: false,
 });
@@ -64,7 +74,7 @@ const model = new mongoose.Schema(schema, {
 model.index(index, weights);
 model.statics.customValidate = async (obj) => valid.attempt(obj, schemaValidation);
 
-const name = "Clients";
-const collection = "clients";
+export const name = "Clients";
+export const collection = "clients";
 
 export default (conn) => conn.model(name, model, collection);
