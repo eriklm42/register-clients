@@ -27,11 +27,11 @@ export const schemaValidation = valid.object({
       is: valid.alternatives("create"),
       then: valid.required(),
     }),
-  address: valid.array().when(valid.ref("action"), {
+  address: valid.array(),
+  active: valid.boolean().when(valid.ref("action"), {
     is: valid.alternatives("create"),
     then: valid.required(),
   }),
-  active: valid.boolean(),
 });
 
 export const schema = {
@@ -65,7 +65,7 @@ export const weights = {
 };
 
 export const model = new mongoose.Schema(schema, {
-  timestamps: { createdAt: "created_at", updatedAt: "updated_at", active: true },
+  timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
   strict: false,
 });
 

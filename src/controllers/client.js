@@ -13,21 +13,16 @@ const Address = modelAddress(conn);
 const Control = () => {
   const create = async (req, res) => {
     try {
-      const createAddress = await addressControl().create({ body: req.body.address[0] }, res);
-
-      if (!createAddress) throw new Error("Error in create your address");
-
-      const newAddress = await addressControl().find(req, undefined, {
-        $and: [{ postalCode: req.body.address[0].postalCode, number: req.body.address[0].number }],
-      });
-
-      req.body.address[0] = newAddress._id;
-
-      if (!req.body.password) throw new Error("Password was not provided");
+      const address = req.body.address[0];
+      delete req.body.address[0];
 
       req.body.password = Jwt().hashPassoword(req.body.password);
 
-      const newClient = await Actions().create(Client, req.body);
+      const newClient = await Actions().create(Client, { ...req.body, active: true });
+
+      const newAddress = await Actions().create(Address, address);
+
+      await Actions().update(Client, { _id: newClient._id }, { address: newAddress._id });
 
       const response = await Actions().findOne(Client, { _id: newClient._id }, { path: "address", model: "Address" });
 
