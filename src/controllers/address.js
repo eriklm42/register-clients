@@ -1,28 +1,28 @@
 import Actions from "../actions/index.js";
 import { getConnection } from "../helpers/mongoDB.js";
 import modelAddress from "../models/address.js";
+import modelClient from "../models/clients.js";
 import clientControl from "./client.js";
 import Jwt from "../helpers/jwt.js";
 import validationError from "../helpers/error.js";
 
 const conn = getConnection();
 const Address = modelAddress(conn);
+const Client = modelClient(conn);
 
 const Control = () => {
-  const create = async (req, res, internal = false) => {
+  const create = async (req, res) => {
     try {
-      if (!internal) await Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
+      await Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
 
-      const body = req.body;
-      delete body.clientId;
+      const clientId = req.body.clientId;
+      delete req.body.clientId;
 
-      const response = await Actions().create(Address, body);
+      const response = await Actions().create(Address, req.body);
 
-      if (internal) {
-        if (!req.body.clientId) throw new Error("Inform the clientId");
+      if (!clientId) throw new Error("Inform the clientId");
 
-        await clientControl().update({ _id: req.body.clientId }, { $push: { address: response._id } });
-      }
+      await Actions().update(Client, { _id: clientId }, { $push: { address: response._id } });
 
       if (res) res.status(200).send(response);
       return response;
@@ -74,11 +74,9 @@ const Control = () => {
     try {
       await Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
 
-      await clientControl().update({ address: req.params.id }, { $pull: { address: req.params.id } });
+      await Actions().update(Client, { address: req.params.id }, { $pull: { address: req.params.id } });
 
       const response = await Actions().remove(Address, { _id: req.params.id });
-
-      console.log({ response });
 
       if (res) res.status(200).send("Address successfully removed");
       return response;

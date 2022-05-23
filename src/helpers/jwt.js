@@ -21,7 +21,7 @@ const Jwt = () => {
   const verifyToken = async (token, type = "login", customValidateTokenOptions = {}) => {
     return new Promise((resolve, reject) => {
       const options = { ...defaultTokenOptions, ...customValidateTokenOptions };
-
+      if (!token) throw new Error("Inform the barer token");
       if (token.search(" ") > 0) token = token.split(" ")[1];
 
       jwt.verify(token, process.env.TOKEN_KEY, options, (err, decoded) => {

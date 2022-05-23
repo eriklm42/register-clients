@@ -3,10 +3,7 @@ import valid from "../helpers/validation.js";
 
 export const schemaValidation = valid.object({
   action: valid.string(),
-  _id: valid.string().when(valid.ref("action"), {
-    is: valid.alternatives("update"),
-    then: valid.required(),
-  }),
+  _id: valid.string(),
   name: valid.string().when(valid.ref("action"), {
     is: valid.alternatives("create"),
     then: valid.required(),

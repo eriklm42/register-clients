@@ -25,8 +25,6 @@ const Actions = () => {
   };
 
   const update = async (model, where, data) => {
-    model.customValidate({ ...where, ...data, action: "update" });
-
     await model.findOneAndUpdate(where, data, {
       new: true,
     });

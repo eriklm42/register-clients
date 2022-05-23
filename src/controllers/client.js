@@ -4,14 +4,16 @@ import modelClient from "../models/clients.js";
 import addressControl from "./address.js";
 import Jwt from "../helpers/jwt.js";
 import validationError from "../helpers/error.js";
+import modelAddress from "../models/address.js";
 
 const conn = getConnection();
 const Client = modelClient(conn);
+const Address = modelAddress(conn);
 
 const Control = () => {
   const create = async (req, res) => {
     try {
-      const createAddress = await addressControl().create({ body: req.body.address[0] }, res, true);
+      const createAddress = await addressControl().create({ body: req.body.address[0] }, res);
 
       if (!createAddress) throw new Error("Error in create your address");
 
@@ -53,6 +55,7 @@ const Control = () => {
       Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
 
       const response = await Actions().update(Client, { _id: req.params.id }, req.body);
+
       if (res) res.status(200).send(response);
       return response;
     } catch (error) {
