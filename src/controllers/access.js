@@ -2,6 +2,7 @@ import Actions from "../actions/index.js";
 import { getConnection } from "../helpers/mongoDB.js";
 import modelClient from "../models/clients.js";
 import Jwt from "../helpers/jwt.js";
+import validationError from "../helpers/error.js";
 
 const conn = getConnection();
 const Client = modelClient(conn);
@@ -20,8 +21,7 @@ const Control = () => {
 
       res.status(200).send({ token });
     } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
+      validationError(error, res);
     }
   };
 

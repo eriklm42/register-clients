@@ -34,6 +34,7 @@ export const schemaValidation = valid.object({
     is: valid.alternatives("create"),
     then: valid.required(),
   }),
+  active: valid.boolean(),
 });
 
 export const schema = {

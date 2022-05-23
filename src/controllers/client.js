@@ -3,6 +3,7 @@ import { getConnection } from "../helpers/mongoDB.js";
 import modelClient from "../models/clients.js";
 import addressControl from "./address.js";
 import Jwt from "../helpers/jwt.js";
+import validationError from "../helpers/error.js";
 
 const conn = getConnection();
 const Client = modelClient(conn);
@@ -30,38 +31,42 @@ const Control = () => {
 
       res.status(200).send(response);
     } catch (error) {
-      console.error({ error });
-      res.status(500).send(error);
+      validationError(error, res);
     }
   };
 
   const find = async (req, res) => {
     try {
-      const response = await Actions().findOne(Client, { _id: req.params.id });
+      await Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
+
+      const response = await Actions().findOne(Client, { _id: req.params.id }, { path: "address", model: "Address" });
       res.status(200).send(response);
     } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
+      validationError(error, res);
     }
   };
 
   const update = async (req, res) => {
     try {
+      console.log(req.headers);
+
+      Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
+
       const response = await Actions().update(Client, { _id: req.params.id }, req.body);
       res.status(200).send(response);
     } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
+      validationError(error, res);
     }
   };
 
   const remove = async (req, res) => {
     try {
-      const response = await Actions().update(Client, { _id: req.params.id }, { active: false });
-      res.status(200).send(response);
+      Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
+
+      await Actions().update(Client, { _id: req.params.id }, { active: false });
+      res.status(200).send("Client successfully removed");
     } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
+      validationError(error, res);
     }
   };
 

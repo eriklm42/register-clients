@@ -1,6 +1,7 @@
 import Actions from "../actions/index.js";
 import { getConnection } from "../helpers/mongoDB.js";
 import modelAddress from "../models/address.js";
+import validationError from "../helpers/error.js";
 
 const conn = getConnection();
 const Address = modelAddress(conn);
@@ -12,8 +13,7 @@ const Control = () => {
       if (res) res.status(200).send(response);
       return response;
     } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
+      validationError(error, res);
     }
   };
 
@@ -23,8 +23,7 @@ const Control = () => {
       if (res) res.status(200).send(response);
       return response;
     } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
+      validationError(error, res);
     }
   };
 
@@ -33,8 +32,7 @@ const Control = () => {
       const response = await Actions().update(Address, { _id: req.params.id }, req.body);
       res.status(200).send(response);
     } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
+      validationError(error, res);
     }
   };
 
@@ -43,8 +41,7 @@ const Control = () => {
       const response = await Actions().update(Address, { _id: req.params.id }, { active: false });
       res.status(200).send(response);
     } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
+      validationError(error, res);
     }
   };
 
