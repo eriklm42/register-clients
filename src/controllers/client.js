@@ -11,11 +11,11 @@ const Client = modelClient(conn);
 const Control = () => {
   const create = async (req, res) => {
     try {
-      const createAddress = await addressControl().create({ body: req.body.address[0] });
+      const createAddress = await addressControl().create({ body: req.body.address[0] }, res, true);
 
       if (!createAddress) throw new Error("Error in create your address");
 
-      const newAddress = await addressControl().find({
+      const newAddress = await addressControl().find(req, undefined, {
         $and: [{ postalCode: req.body.address[0].postalCode, number: req.body.address[0].number }],
       });
 
@@ -29,18 +29,20 @@ const Control = () => {
 
       const response = await Actions().findOne(Client, { _id: newClient._id }, { path: "address", model: "Address" });
 
-      res.status(200).send(response);
+      if (res) res.status(200).send(response);
+      return response;
     } catch (error) {
       validationError(error, res);
     }
   };
 
-  const find = async (req, res) => {
+  const find = async (req, res, query = { _id: req.params.id }) => {
     try {
       await Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
 
-      const response = await Actions().findOne(Client, { _id: req.params.id }, { path: "address", model: "Address" });
-      res.status(200).send(response);
+      const response = await Actions().findOne(Client, query, { path: "address", model: "Address" });
+      if (res) res.status(200).send(response);
+      return response;
     } catch (error) {
       validationError(error, res);
     }
@@ -48,12 +50,11 @@ const Control = () => {
 
   const update = async (req, res) => {
     try {
-      console.log(req.headers);
-
       Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
 
       const response = await Actions().update(Client, { _id: req.params.id }, req.body);
-      res.status(200).send(response);
+      if (res) res.status(200).send(response);
+      return response;
     } catch (error) {
       validationError(error, res);
     }
@@ -64,7 +65,9 @@ const Control = () => {
       Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
 
       await Actions().update(Client, { _id: req.params.id }, { active: false });
-      res.status(200).send("Client successfully removed");
+
+      if (res) res.status(200).send("Client successfully removed");
+      return response;
     } catch (error) {
       validationError(error, res);
     }

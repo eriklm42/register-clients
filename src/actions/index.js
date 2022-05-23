@@ -21,13 +21,7 @@ const Actions = () => {
   };
 
   const remove = async (model, where) => {
-    await model.findOneAndUpdate(
-      where,
-      { active: false },
-      {
-        new: true,
-      }
-    );
+    await model.deleteOne(where);
   };
 
   const update = async (model, where, data) => {
