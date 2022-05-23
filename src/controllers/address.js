@@ -31,20 +31,7 @@ const Control = () => {
     }
   };
 
-  const find = async (req, res, query = { _id: req.params.id }) => {
-    try {
-      await Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
-
-      const response = await Actions().findOne(Address, query);
-
-      if (res) res.status(200).send(response);
-      return response;
-    } catch (error) {
-      validationError(error, res);
-    }
-  };
-
-  const findAll = async (req, res) => {
+  const find = async (req, res) => {
     try {
       await Jwt().verifyToken(req.headers.authorization || req.headers.Autorization);
 
@@ -89,7 +76,6 @@ const Control = () => {
     create,
     update,
     remove,
-    findAll,
     find,
   };
 };
