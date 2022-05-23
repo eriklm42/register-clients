@@ -1,0 +1,377 @@
+{
+	"info": {
+		"_postman_id": "809f1fbd-7d65-440e-872c-1d401f6a9bea",
+		"name": "Person CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13910079"
+	},
+	"item": [
+		{
+			"name": "client",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Erik Lucas Maros\",\r\n    \"document\": \"09084993969\",\r\n    \"birth_date\": \"1995-06-16\",\r\n    \"password\": \"metal666\",\r\n    \"email\": \"asdasd\",\r\n    \"address\": [\r\n        {\r\n            \"street\": \"Luis José de Medeiros\",\r\n            \"complement\": \"AP 12 BL D\",\r\n            \"number\": 965,\r\n            \"neighborhood\": \"Cordeiros\",\r\n            \"city\": \"Itajaí\",\r\n            \"country\": \"Brasil\",\r\n            \"state\": \"SC\",\r\n            \"postalCode\": 883311120\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clients/6286971bcaf09594ac64110a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"6286971bcaf09594ac64110a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lukita\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clients/6286971bcaf09594ac64110a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"6286971bcaf09594ac64110a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/clients/6286971bcaf09594ac64110a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"clients",
+								"6286971bcaf09594ac64110a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "address",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\": \"Luis José de Medeiros\",\r\n    \"complement\": \"AP 12 BL D\",\r\n    \"number\": 965,\r\n    \"neighborhood\": \"Cordeiros\",\r\n    \"city\": \"Itajaí\",\r\n    \"country\": \"Brasil\",\r\n    \"state\": \"SC\",\r\n    \"postalCode\": 883311120,\r\n    \"clientId\": \"6286971bcaf09594ac64110a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/address",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/address/6286971bcaf09594ac64110a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"address",
+								"6286971bcaf09594ac64110a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lukita\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/address/6286971bcaf09594ac64110a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"address",
+								"6286971bcaf09594ac64110a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibG9naW4iLCJkYXRhIjp7ImVtYWlsIjoiZXJpa2xtNDJAZ21haWwuY29tIiwicGFzc3dvcmQiOiIzYWZhNTkyNDg3MDdmZTg5ZGVlMjVmYjVmNDViZmUwZTBhZWEyNTgxYTY4OWFiNjlkYTVjNDA4NzRiM2JmMGIwIn0sImlhdCI6MTY1Mjk4ODgyNH0.j6lE-zsIjK6vzbzb1dfH7xnZ4aOs-ZYYYrob_5iC62o",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/address/62869583a0e7f5fd0793ab2a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"address",
+								"62869583a0e7f5fd0793ab2a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "access",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eriklm42@gmail.com\",\r\n    \"password\": \"metal666\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
